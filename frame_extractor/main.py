@@ -4,8 +4,8 @@ import cv2
 
 # TODO: make it multi-thread
 if __name__ == "__main__":
-    vedio_path = "/home/setsuna/Documents/setsuna_workspace/work/高速相机目标检测算法调研/由亮到暗，丢失目标.mp4"
-    target_folder = "/home/setsuna/Documents/setsuna_workspace/work/高速相机目标检测算法调研/vedio_frames"
+    vedio_path = "/home/setsuna/Documents/setsuna_workspace/work/Datasets/greenBox/assets/vedios/4.mp4"
+    target_folder = "/home/setsuna/Documents/setsuna_workspace/work/Datasets/greenBox/assets/images/4"
 
     if not os.path.exists(target_folder):
         os.makedirs(target_folder)
@@ -20,7 +20,7 @@ if __name__ == "__main__":
         if cv2.waitKey(10) == 27: break
         if count == v_frame_num: break
         success,image = v_cap.read()
-        img_name = f"frame{count}.jpg"
+        img_name = f"frame{count}.jpg" # TODO: now index form is 1,2,...,10,...,100,...; make it 001,002,...,010,...,100
         img_path = os.path.join(target_folder, img_name)
         cv2.imwrite(img_path, image) # it cost times, will get way more faster when make this multi-thread
         count += 1
